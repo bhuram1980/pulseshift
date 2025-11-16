@@ -1,12 +1,21 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'PulseShift — Locum Staffing in <24hrs',
-  description: 'AI-powered locum tenens staffing for hospitals and providers.',
+  title: 'PulseShift.health — AI Locum Staffing in Texas | <24hr Fills',
+  description: 'AI-powered locum tenens staffing for hospitals in Texas. Post a shift, get verified MDs, NPs, PAs in <24 hours. 98% fill rate.',
+  keywords: 'locum tenens Texas, locum staffing, physician staffing, CRNA jobs, emergency physician Texas',
+  openGraph: {
+    title: 'PulseShift.health — Never Miss a Shift',
+    description: 'AI matches verified locums to your open shifts in <24 hours.',
+    url: 'https://pulseshift.health',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -20,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
@@ -27,7 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={inter.className}>
+        <Navbar />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>
