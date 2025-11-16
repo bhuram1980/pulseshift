@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - GitHub account
-- Vercel account (sign up at https://vercel.com)
+- Vercel account (sign up at https://vercel.com) 
 - Supabase project with credentials
 
 ## Deployment Steps
