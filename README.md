@@ -20,10 +20,10 @@ npm install
 
 ### 3. Configure Environment Variables
 
-Copy `env.example` to `.env.local` and fill in your values:
+Copy `.env.example` to `.env.local` and fill in your values:
 
 ```bash
-cp env.example .env.local
+cp .env.example .env.local
 ```
 
 Update with your Supabase credentials:
@@ -57,8 +57,12 @@ app/
 lib/
   └── supabase.ts         # Supabase client configuration
 public/
-  ├── logo.svg            # PulseShift logo
-  ├── favicon.svg         # Site favicon
+  ├── logo.svg            # PulseShift logo with pulse wave
+  ├── favicon.svg         # Site favicon (32x32)
+  ├── favicon-16x16.svg   # Small favicon
+  ├── favicon-32x32.svg   # Standard favicon
+  ├── apple-touch-icon.svg # Apple touch icon (180x180)
+  ├── site.webmanifest    # PWA manifest
   └── hero-doctor.jpg     # Hero background image (add this)
 ```
 
@@ -72,14 +76,24 @@ public/
 
 ### Vercel (Recommended)
 
+The project is fully configured for Vercel deployment with:
+- ✅ Optimized `vercel.json` configuration
+- ✅ Security headers
+- ✅ Asset caching
+- ✅ Environment variable templates
+
+**Quick Deploy:**
+
 1. Push to GitHub
 2. Import project in Vercel
-3. Add environment variables in Vercel dashboard
+3. Add environment variables from `.env.example`
 4. Deploy!
+
+📖 **See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.**
 
 ### Domain Setup
 
-1. Buy `pulseshift.com` via GoDaddy
+1. Buy `pulseshift.com` or `pulseshift.health` via GoDaddy
 2. Point DNS to Vercel
 3. Update `NEXT_PUBLIC_SITE_URL` in environment variables
 
@@ -95,7 +109,9 @@ public/
 ## 📝 Features
 
 ### Current MVP Features
-- ✅ Professional logo and branding
+- ✅ Professional logo and branding with pulse wave design
+- ✅ Complete favicon set (multiple sizes + Apple touch icon)
+- ✅ PWA manifest for mobile installation
 - ✅ Sticky navigation with mobile menu
 - ✅ Hero section with trust metrics
 - ✅ Trust badges (NALTO, HIPAA, Joint Commission)
@@ -106,6 +122,7 @@ public/
 - ✅ Real-time shift listings
 - ✅ Responsive design
 - ✅ SEO optimized with meta tags
+- ✅ Vercel deployment ready
 - ✅ AI-ready architecture
 
 ## 🎯 Next Steps
@@ -119,8 +136,8 @@ public/
    - Copy project URL and anon key
 
 2. **Add Environment Variables to Vercel**
-   - Go to [Vercel Dashboard](https://vercel.com/bhuram1980s-projects/pulseshift/settings/environment-variables)
-   - Add all variables from `env.example`:
+   - Go to Vercel Dashboard → Settings → Environment Variables
+   - Add all variables from `.env.example`:
      - `NEXT_PUBLIC_SUPABASE_URL`
      - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
      - `SUPABASE_SERVICE_ROLE_KEY`
@@ -133,34 +150,28 @@ public/
    - Recommended: 1920x1080 or larger
    - See `public/HERO_IMAGE_README.txt` for details
 
-4. **Generate Favicon.ico**
-   - Visit [favicon.io](https://favicon.io)
-   - Use text "PS" with blue background (#0077CC)
-   - Download and save as `public/favicon.ico`
-   - (Currently using SVG favicon as fallback)
-
 ### Domain & Branding
 
-5. **Set Up Custom Domain**
+4. **Set Up Custom Domain**
    - Purchase `pulseshift.com` or `pulseshift.health` via GoDaddy
    - In Vercel: Settings → Domains → Add domain
    - Update DNS records as instructed
    - Update `NEXT_PUBLIC_SITE_URL` environment variable
 
-6. **Add Open Graph Image**
+5. **Add Open Graph Image**
    - Create 1200x630px image for social sharing
    - Save as `public/og-image.jpg`
    - Update in `app/layout.tsx` metadata if needed
 
 ### Phase 2 Features
 
-7. **Authentication System**
+6. **Authentication System**
    - Implement Supabase Auth
    - Add login/signup pages
    - Protect facility/provider routes
    - User profiles and dashboards
 
-8. **AI Matching Algorithm**
+7. **AI Matching Algorithm**
    - Build matching logic based on:
      - Specialty compatibility
      - Location preferences
@@ -168,24 +179,24 @@ public/
      - Credential requirements
    - Real-time notifications
 
-9. **Payment Processing**
+8. **Payment Processing**
    - Integrate Stripe or similar
    - Handle 20-30% markup on rates
    - Weekly payment processing
    - Invoice generation
 
-10. **Dashboard Features**
+9. **Dashboard Features**
     - Provider dashboard: View applications, earnings, schedule
     - Facility dashboard: Manage shifts, view candidates, accept/reject
     - Analytics and reporting
 
-11. **Email Notifications**
+10. **Email Notifications**
     - New shift matches
     - Application status updates
     - Payment confirmations
     - Use Resend, SendGrid, or similar
 
-12. **Credentialing Workflow**
+11. **Credentialing Workflow**
     - License verification
     - DEA number validation
     - Malpractice insurance checks
