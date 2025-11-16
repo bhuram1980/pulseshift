@@ -1,6 +1,6 @@
-<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="205" height="40" viewBox="0 0 205 40" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3 20 Q10 10, 17 20 T31 20" stroke="#0077CC" stroke-width="4" fill="none"/>
   <text x="40" y="28" font-family="Inter, sans-serif" font-weight="900" font-size="24" fill="#1E293B">PulseShift</text>
-  <text x="158" y="28" font-family="Inter, sans-serif" font-size="14" fill="#0077CC">.health</text>
+  <text x="159" y="28" font-family="Inter, sans-serif" font-size="14" fill="#0077CC">.health</text>
 </svg>
 
