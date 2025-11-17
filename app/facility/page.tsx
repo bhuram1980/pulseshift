@@ -12,7 +12,8 @@ const formSchema = z.object({
   startDate: z.string(),
   facility: z.string().min(3),
   location: z.string().min(3),
-  housing: z.boolean()
+  housing: z.boolean(),
+  email: z.string().email()
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -39,6 +40,23 @@ export default function FacilityForm() {
       if (insertError) {
         setError('Failed to post shift. Please check your connection and try again.');
       } else {
+        // Send confirmation email
+        await fetch('/api/send-shift-confirmation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.email,
+            shiftData: {
+              specialty: data.specialty,
+              rate: data.rate,
+              startDate: data.startDate,
+              facility: data.facility,
+              location: data.location,
+              housing: data.housing
+            }
+          })
+        }).catch(err => console.error('Email error:', err));
+
         setSuccess(true);
       }
     } catch (err) {
@@ -70,7 +88,10 @@ export default function FacilityForm() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded-2xl shadow-xl">
           {error && <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">{error}</div>}
-          
+
+          <input {...register('email')} type="email" placeholder="Your Email (for confirmation)" className="w-full p-4 border rounded-lg mb-4" />
+          {errors.email && <p className="text-red-500 text-sm mb-2">Enter a valid email</p>}
+
           <input {...register('specialty')} placeholder="Specialty (e.g. ER, Psych, CRNA)" className="w-full p-4 border rounded-lg mb-4" />
           {errors.specialty && <p className="text-red-500 text-sm mb-2">Required</p>}
 

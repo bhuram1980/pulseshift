@@ -24,6 +24,7 @@ create table providers (
   specialty text,
   license_state text,
   dea_number text,
+  resume_url text,
   malpractice_insured boolean default false,
   verified boolean default false,
   created_at timestamp default now()
